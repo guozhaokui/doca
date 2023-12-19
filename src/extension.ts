@@ -20,14 +20,14 @@ async function modifyRelatedDocaFile(filePath: string, id: number): Promise<void
 	const docaFilePath = filePath.replace(/\.[^.]*$/, '.doca'); // 将扩展名替换为.doca
   
 	// 检查.doca文件是否存在
-	if(fs.existsSync(docaFilePath)){
-		fs.writeFileSync(docaFilePath,`[id:${id}]`,{encoding:'utf-8'});
-		return;
-	}
+	// if(!fs.existsSync(docaFilePath)){
+	// 	fs.writeFileSync(docaFilePath,`[id:${id}]`,{encoding:'utf-8'});
+	// 	return;
+	// }
 	// 读取.doca文件的内容
 	//const docaContent = fs.readFileSync(docaFilePath, 'utf8');
 	// 这里开始你的修改逻辑，下面只是一个示例
-	fs.appendFileSync(docaFilePath,`[id:${id}]`);
+	fs.appendFileSync(docaFilePath,'\n'+`[id:${id}]`);
 	// 将修改后的内容写回.doca文件
 	//fs.writeFileSync(docaFilePath, modifiedContent, 'utf8');
   }
